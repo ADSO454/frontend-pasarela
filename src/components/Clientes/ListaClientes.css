@@ -1,0 +1,238 @@
+.lista-clientes-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.lista-clientes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.lista-clientes-header h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.btn-crear-cliente {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-crear-cliente:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.clientes-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.clientes-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.clientes-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.clientes-table tbody tr:hover {
+  background: #f8f9ff;
+}
+
+.nombre-cell {
+  font-weight: 600;
+  color: #333;
+}
+
+.api-key-cell code {
+  background: #f5f5f5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-danger {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-action {
+  padding: 0.4rem 0.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-action:hover {
+  transform: scale(1.1);
+}
+
+.btn-edit {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.btn-edit:hover {
+  background: #bbdefb;
+}
+
+.btn-key {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.btn-key:hover {
+  background: #ffe0b2;
+}
+
+.btn-toggle-on {
+  background: #d4edda;
+  color: #155724;
+}
+
+.btn-toggle-on:hover {
+  background: #c3e6cb;
+}
+
+.btn-toggle-off {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-toggle-off:hover {
+  background: #f5c6cb;
+}
+
+/* Estilos para el modal de cliente */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.modal-body {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-body .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body .form-group label {
+  display: block;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.modal-body .form-group input,
+.modal-body .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.modal-body .form-group input:focus,
+.modal-body .form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.btn-submit-modal {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-submit-modal:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-submit-modal:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
