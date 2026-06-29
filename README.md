@@ -93,8 +93,8 @@ Aplicación frontend para gestionar pagos a través de una pasarela de pagos que
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/frontend-pasarela-pagos.git
-cd frontend-pasarela-pagos
+git clone https://github.com/ADSO454/frontend-pasarela.git
+cd frontend-pasarela
 ```
 
 ### 2. Instalar dependencias
