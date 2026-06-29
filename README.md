@@ -415,7 +415,7 @@ MIT License - Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ## 👥 Autores
 
-- **Tu Nombre** - [@tu-usuario](https://github.com/tu-usuario)
+- **Instructor Jeyson David Zuñiga Gomez** - [@JZGSena](https://github.com/JZGSena)
 
 ---
 
@@ -432,8 +432,8 @@ MIT License - Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 Para reportar problemas o sugerir mejoras:
 
-- **Email**: tu-email@ejemplo.com
-- **Issues**: [GitHub Issues](https://github.com/tu-usuario/frontend-pasarela-pagos/issues)
+- **Email**: jdzunigag@sena.edu.co
+- **Issues**: [GitHub Issues](https://github.com/ADSO454/frontend-pasarela-pagos/issues)
 
 ---
 

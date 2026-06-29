@@ -1,4 +1,5 @@
-import api from './api'
+// src/services/pagoService.js
+import userApi from './api'
 
 export const pagoService = {
   // Crear un nuevo pago
@@ -9,7 +10,7 @@ export const pagoService = {
       formData.append('imagen', imagen)
     }
 
-    const response = await api.post('/pagos', formData, {
+    const response = await userApi.post('/pagos', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -19,31 +20,31 @@ export const pagoService = {
 
   // Obtener un pago por ID
   obtenerPago: async (id) => {
-    const response = await api.get(`/pagos/${id}`)
+    const response = await userApi.get(`/pagos/${id}`)
     return response.data
   },
 
   // Listar pagos con filtros
   filtrarPagos: async (filtros = {}) => {
-    const response = await api.post('/pagos/filtrar', filtros)
+    const response = await userApi.post('/pagos/filtrar', filtros)
     return response.data
   },
 
   // Aprobar un pago
   aprobarPago: async (id) => {
-    const response = await api.put(`/pagos/${id}/aprobar`)
+    const response = await userApi.put(`/pagos/${id}/aprobar`)
     return response.data
   },
 
   // Rechazar un pago
   rechazarPago: async (id) => {
-    const response = await api.put(`/pagos/${id}/rechazar`)
+    const response = await userApi.put(`/pagos/${id}/rechazar`)
     return response.data
   },
 
   // Descargar imagen de un pago
   descargarImagen: async (id) => {
-    const response = await api.get(`/pagos/${id}/imagen`, {
+    const response = await userApi.get(`/pagos/${id}/imagen`, {
       responseType: 'blob',
     })
     return response

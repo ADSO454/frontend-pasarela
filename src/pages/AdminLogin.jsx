@@ -1,6 +1,8 @@
+// src/pages/AdminLogin.jsx
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { adminApi } from '../services/api'
 import { FaLock } from 'react-icons/fa'
 import toast from 'react-hot-toast'
 import './AdminLogin.css'
@@ -16,15 +18,34 @@ const AdminLogin = () => {
     setLoading(true)
 
     try {
+      // Primero verificar la contraseña del admin
       const success = login(password)
-      if (success) {
-        toast.success('Acceso concedido')
+      if (!success) {
+        toast.error('❌ Contraseña incorrecta')
+        setLoading(false)
+        return
+      }
+
+      // Luego verificar que la API Key de admin es válida
+      try {
+        // Hacer una petición de prueba al endpoint de clientes
+        await adminApi.get('/clientes')
+
+        toast.success('✅ Acceso concedido')
         navigate('/admin/clientes')
-      } else {
-        toast.error('Contraseña incorrecta')
+      } catch (apiError) {
+        // Si la API Key es inválida o no tiene permisos
+        if (apiError?.status === 401 || apiError?.status === 403) {
+          toast.error('❌ API Key de administrador incorrecta o sin permisos')
+          // Cerrar sesión del admin
+          login(false) // O logout
+          navigate('/')
+        } else {
+          toast.error('❌ Error al verificar permisos de administrador')
+        }
       }
     } catch (error) {
-      toast.error('Error al iniciar sesión')
+      toast.error('❌ Error al iniciar sesión')
     } finally {
       setLoading(false)
     }

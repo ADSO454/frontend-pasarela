@@ -1,5 +1,5 @@
+// src/context/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react'
-import { authService } from '../services/authService'
 
 const AuthContext = createContext()
 
@@ -7,23 +7,37 @@ export const AuthProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
-    setIsAdmin(authService.isAuthenticated())
+    // Verificar si hay sesión de admin activa
+    const adminSession = localStorage.getItem('adminAuthenticated')
+    setIsAdmin(adminSession === 'true')
   }, [])
 
   const login = (password) => {
-    const success = authService.login(password)
-    if (success) {
+    const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD
+    if (password === ADMIN_PASSWORD) {
+      localStorage.setItem('adminAuthenticated', 'true')
       setIsAdmin(true)
+      return true
     }
-    return success
+    return false
   }
 
   const logout = () => {
-    authService.logout()
+    localStorage.removeItem('adminAuthenticated')
     setIsAdmin(false)
   }
 
-  return <AuthContext.Provider value={{ isAdmin, login, logout }}>{children}</AuthContext.Provider>
+  // Para cerrar sesión sin contraseña (cuando falla la API Key)
+  const forceLogout = () => {
+    localStorage.removeItem('adminAuthenticated')
+    setIsAdmin(false)
+  }
+
+  return (
+    <AuthContext.Provider value={{ isAdmin, login, logout, forceLogout }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 export const useAuth = () => {

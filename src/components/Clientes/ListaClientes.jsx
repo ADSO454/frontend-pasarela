@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useClientes } from '../../hooks/useClientes'
+import { useAuth } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 import { FaEdit, FaKey, FaToggleOn, FaToggleOff, FaPlus, FaSpinner } from 'react-icons/fa'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
@@ -10,18 +12,41 @@ const ListaClientes = () => {
   const { clientes, loading, listarClientes, regenerarApiKey, desactivarCliente, activarCliente } =
     useClientes()
 
+  const { forceLogout } = useAuth()
+  const navigate = useNavigate()
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [clienteEditando, setClienteEditando] = useState(null)
 
   useEffect(() => {
-    listarClientes()
+    const loadClientes = async () => {
+      try {
+        await listarClientes()
+      } catch (error) {
+        // Si el error es de autenticación, redirigir
+        if (error?.status === 401 || error?.status === 403) {
+          toast.error('⚠️ No tienes permisos de administrador')
+          forceLogout()
+          navigate('/')
+        }
+      }
+    }
+
+    loadClientes()
   }, [])
 
   const handleRegenerarKey = async (id, nombre) => {
     if (window.confirm(`¿Estás seguro de regenerar la API Key de "${nombre}"?`)) {
-      const nuevaKey = await regenerarApiKey(id)
-      if (nuevaKey) {
-        toast.success(`Nueva API Key: ${nuevaKey}`)
+      try {
+        const nuevaKey = await regenerarApiKey(id)
+        if (nuevaKey) {
+          toast.success(`✅ Nueva API Key: ${nuevaKey}`)
+        }
+      } catch (error) {
+        if (error?.status === 401 || error?.status === 403) {
+          toast.error('⚠️ No tienes permisos para esta acción')
+          forceLogout()
+          navigate('/')
+        }
       }
     }
   }
@@ -29,10 +54,18 @@ const ListaClientes = () => {
   const handleToggleActivo = async (id, activo, nombre) => {
     const accion = activo ? 'desactivar' : 'activar'
     if (window.confirm(`¿Estás seguro de ${accion} al cliente "${nombre}"?`)) {
-      if (activo) {
-        await desactivarCliente(id)
-      } else {
-        await activarCliente(id)
+      try {
+        if (activo) {
+          await desactivarCliente(id)
+        } else {
+          await activarCliente(id)
+        }
+      } catch (error) {
+        if (error?.status === 401 || error?.status === 403) {
+          toast.error('⚠️ No tienes permisos para esta acción')
+          forceLogout()
+          navigate('/')
+        }
       }
     }
   }
