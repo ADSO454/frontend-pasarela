@@ -84,7 +84,7 @@ Aplicación frontend para gestionar pagos a través de una pasarela de pagos que
 
 - **Node.js** v18.0.0 o superior
 - **npm** v9.0.0 o superior
-- **Backend** API de Pasarela de Pagos corriendo (ver [backend repository](#))
+- **Backend** API de Pasarela de Pagos corriendo (ver [backend repository](https://github.com/ADSO454/api-pasarela))
 
 ---
 
