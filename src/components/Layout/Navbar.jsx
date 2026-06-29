@@ -6,6 +6,7 @@ import './Navbar.css'
 const Navbar = () => {
   const { isAdmin, logout } = useAuth()
   const navigate = useNavigate()
+  const appName = import.meta.env.VITE_APP_NAME || 'Pasarela de pagos'
 
   const handleLogout = () => {
     logout()
@@ -17,7 +18,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
           <span className="brand-icon">💳</span>
-          Pasarela de pagos
+          {appName}
         </Link>
 
         <div className="navbar-menu">

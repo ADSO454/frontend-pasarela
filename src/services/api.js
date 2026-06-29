@@ -25,10 +25,42 @@ const createApiInstance = (apiKey) => {
 
   // Interceptor para manejar errores
   instance.interceptors.response.use(
-    (response) => response,
+    (response) => {
+      // 🔴 LOG: Ver la respuesta exitosa
+      console.log('✅ [API] Respuesta exitosa:', {
+        url: response.config.url,
+        status: response.status,
+        data: response.data,
+      })
+      return response
+    },
     (error) => {
+      // 🔴 LOG: Ver el error completo
+      console.error('❌ [API] Error completo:', error)
+
       if (error.response) {
-        const { status, data } = error.response
+        const { status, data, config } = error.response
+
+        // 🔴 LOG: Ver detalles del error
+        console.error('📄 [API] Detalles del error:', {
+          url: config?.url,
+          method: config?.method,
+          status: status,
+          data: data,
+          headers: error.response.headers,
+        })
+
+        // 🔴 Si es error 500, mostrar el mensaje completo del backend
+        if (status === 500) {
+          console.error('🔥 [API] ERROR 500 - Detalle del backend:', data)
+          // Si el backend devuelve un mensaje de error, mostrarlo
+          const errorMessage = data?.message || data?.error || data || 'Error interno del servidor'
+          const errorObj = new Error(errorMessage)
+          errorObj.status = status
+          errorObj.details = data
+          throw errorObj
+        }
+
         const errorMessage = data?.message || data || 'Error en la solicitud'
 
         if (status === 401) {
@@ -45,6 +77,7 @@ const createApiInstance = (apiKey) => {
 
         const errorObj = new Error(errorMessage)
         errorObj.status = status
+        errorObj.details = data
         throw errorObj
       }
       throw new Error('Error de conexión con el servidor')

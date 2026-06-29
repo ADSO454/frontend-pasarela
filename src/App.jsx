@@ -9,8 +9,10 @@ import CrearPago from './components/Pagos/CrearPago'
 import ListaPagos from './components/Pagos/ListaPagos'
 import ListaClientes from './components/Clientes/ListaClientes'
 import './App.css'
+import { useEffect } from 'react'
 
 const queryClient = new QueryClient()
+const appName = import.meta.env.VITE_APP_NAME || 'Pasarela de pagos'
 
 // Componente para proteger rutas de admin
 const AdminRoute = ({ children }) => {
@@ -19,6 +21,10 @@ const AdminRoute = ({ children }) => {
 }
 
 function App() {
+  useEffect(() => {
+    document.title = appName
+  }, [appName])
+
   return (
     <QueryClientProvider client={queryClient}>
       <Router>

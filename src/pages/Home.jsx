@@ -5,11 +5,12 @@ import './Home.css'
 
 const Home = () => {
   const { isAdmin } = useAuth()
+  const appName = import.meta.env.VITE_APP_NAME || 'Pasarela de pagos'
 
   return (
     <div className="home-container">
       <div className="hero-section">
-        <h1>💳 Pasarela de pagos</h1>
+        <h1>💳 {appName}</h1>
         <p className="hero-subtitle">Gestiona tus pagos de manera fácil y segura</p>
       </div>
 
