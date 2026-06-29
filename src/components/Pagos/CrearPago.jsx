@@ -67,7 +67,7 @@ const CrearPago = () => {
   return (
     <div className="crear-pago-container">
       <div className="crear-pago-card">
-        <h2>Crear Nuevo Pago</h2>
+        <h2>Crear nuevo pago</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="pago-form">
           <div className="form-row">
             <div className="form-group">
@@ -106,7 +106,7 @@ const CrearPago = () => {
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="metodoPago">Método de Pago *</label>
+              <label htmlFor="metodoPago">Método de pago *</label>
               <select
                 id="metodoPago"
                 {...register('metodoPago', { required: 'El método de pago es obligatorio' })}
@@ -125,7 +125,7 @@ const CrearPago = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="idCliente">ID Cliente *</label>
+              <label htmlFor="idCliente">ID cliente *</label>
               <input
                 type="text"
                 id="idCliente"
@@ -164,7 +164,7 @@ const CrearPago = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="imagen">Comprobante de Pago *</label>
+            <label htmlFor="imagen">Comprobante de pago *</label>
             <div className="file-upload">
               <input
                 type="file"
@@ -212,7 +212,7 @@ const CrearPago = () => {
               Cancelar
             </button>
             <button type="submit" className="btn-submit" disabled={loading}>
-              {loading ? 'Creando...' : 'Crear Pago'}
+              {loading ? 'Creando...' : 'Crear pago'}
             </button>
           </div>
         </form>

@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
           <span className="brand-icon">💳</span>
-          Pasarela de Pagos
+          Pasarela de pagos
         </Link>
 
         <div className="navbar-menu">
@@ -25,15 +25,15 @@ const Navbar = () => {
             <FaHome /> Inicio
           </Link>
           <Link to="/pagos/nuevo" className="nav-link">
-            <FaPlus /> Nuevo Pago
+            <FaPlus /> Nuevo pago
           </Link>
           <Link to="/pagos" className="nav-link">
-            <FaList /> Mis Pagos
+            <FaList /> Mis pagos
           </Link>
           {isAdmin && (
             <>
               <Link to="/admin/clientes" className="nav-link admin-link">
-                <FaUsers /> Administrar Clientes
+                <FaUsers /> Administrar clientes
               </Link>
             </>
           )}

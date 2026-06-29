@@ -9,27 +9,27 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="hero-section">
-        <h1>💳 Pasarela de Pagos</h1>
+        <h1>💳 Pasarela de pagos</h1>
         <p className="hero-subtitle">Gestiona tus pagos de manera fácil y segura</p>
       </div>
 
       <div className="features-grid">
         <Link to="/pagos/nuevo" className="feature-card">
           <div className="feature-icon">📤</div>
-          <h3>Crear Pago</h3>
+          <h3>Crear pago</h3>
           <p>Registra un nuevo pago con comprobante</p>
         </Link>
 
         <Link to="/pagos" className="feature-card">
           <div className="feature-icon">📋</div>
-          <h3>Mis Pagos</h3>
+          <h3>Mis pagos</h3>
           <p>Consulta y gestiona todos tus pagos</p>
         </Link>
 
         {isAdmin && (
           <Link to="/admin/clientes" className="feature-card admin-card">
             <div className="feature-icon">👥</div>
-            <h3>Administrar Clientes</h3>
+            <h3>Administrar clientes</h3>
             <p>Gestiona los clientes de la pasarela</p>
           </Link>
         )}
@@ -37,7 +37,7 @@ const Home = () => {
         {!isAdmin && (
           <Link to="/admin/login" className="feature-card admin-card">
             <div className="feature-icon">🔒</div>
-            <h3>Panel Admin</h3>
+            <h3>Panel admin</h3>
             <p>Accede al panel de administración</p>
           </Link>
         )}
@@ -54,7 +54,7 @@ const Home = () => {
           </ol>
         </div>
         <div className="info-card">
-          <h4>Métodos de Pago</h4>
+          <h4>Métodos de pago</h4>
           <ul>
             <li>🏦 Nequi</li>
             <li>🏦 Bre-B</li>

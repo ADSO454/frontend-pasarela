@@ -56,7 +56,7 @@ const AdminLogin = () => {
       <div className="login-card">
         <div className="login-header">
           <div className="login-icon">🔒</div>
-          <h2>Panel de Administración</h2>
+          <h2>Panel de administración</h2>
           <p>Ingresa la contraseña para acceder</p>
         </div>
 

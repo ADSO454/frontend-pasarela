@@ -73,9 +73,9 @@ const ListaClientes = () => {
   return (
     <div className="lista-clientes-container">
       <div className="lista-clientes-header">
-        <h2>Administrar Clientes</h2>
+        <h2>Administrar clientes</h2>
         <button className="btn-crear-cliente" onClick={() => setShowCreateForm(true)}>
-          <FaPlus /> Nuevo Cliente
+          <FaPlus /> Nuevo cliente
         </button>
       </div>
 
@@ -100,7 +100,7 @@ const ListaClientes = () => {
                 <th>Teléfono</th>
                 <th>API Key</th>
                 <th>Estado</th>
-                <th>Fecha Creación</th>
+                <th>Fecha creación</th>
                 <th>Acciones</th>
               </tr>
             </thead>

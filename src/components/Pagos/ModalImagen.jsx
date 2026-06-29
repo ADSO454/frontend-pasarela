@@ -37,7 +37,7 @@ const ModalImagen = ({ isOpen, onClose, pago, onDownload }) => {
     <div className="modal-overlay">
       <div className="modal-content" ref={modalRef}>
         <div className="modal-header">
-          <h3>Comprobante de Pago</h3>
+          <h3>Comprobante de pago</h3>
           <button className="modal-close" onClick={onClose}>
             <FaTimes />
           </button>
@@ -93,7 +93,7 @@ const ModalImagen = ({ isOpen, onClose, pago, onDownload }) => {
 
         <div className="modal-footer">
           <button className="btn-download-modal" onClick={() => onDownload(pago)}>
-            <FaDownload /> Descargar Imagen
+            <FaDownload /> Descargar imagen
           </button>
           <button className="btn-close-modal" onClick={onClose}>
             Cerrar
