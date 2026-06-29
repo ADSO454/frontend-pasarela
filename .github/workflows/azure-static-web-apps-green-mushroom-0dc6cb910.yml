@@ -8,10 +8,11 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     name: Build and Deploy Job
 
@@ -19,8 +20,8 @@ jobs:
       VITE_API_TARGET: ${{ secrets.VITE_API_TARGET }}
       VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
       VITE_API_KEY_ADMIN: ${{ secrets.VITE_API_KEY_ADMIN }}
-      VITE_APP_NAME: ${{ secrets.VITE_APP_NAME }}
       VITE_ADMIN_PASSWORD: ${{ secrets.VITE_ADMIN_PASSWORD }}
+      VITE_APP_NAME: ${{ secrets.VITE_APP_NAME }}
 
     steps:
       - uses: actions/checkout@v4
