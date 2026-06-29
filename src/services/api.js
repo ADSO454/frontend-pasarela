@@ -1,8 +1,14 @@
+// src/services/api.js
 import axios from 'axios'
 
-const API_URL = '/api'
+// Detectar el entorno
+const isDevelopment = import.meta.env.MODE === 'development'
 
-// Obtener las API Keys
+// En desarrollo usa proxy, en producción usa la URL completa
+const API_URL = isDevelopment
+  ? '/api' // Desarrollo: usa el proxy de Vite
+  : import.meta.env.VITE_API_TARGET // Producción: URL completa del backend
+
 const USER_API_KEY = import.meta.env.VITE_API_KEY
 const ADMIN_API_KEY = import.meta.env.VITE_API_KEY_ADMIN
 
@@ -14,6 +20,7 @@ const createApiInstance = (apiKey) => {
       'X-API-Key': apiKey,
       'Content-Type': 'application/json',
     },
+    timeout: 30000,
   })
 
   // Interceptor para manejar errores
@@ -30,11 +37,12 @@ const createApiInstance = (apiKey) => {
           console.error('❌ No tienes permisos para realizar esta acción')
         } else if (status === 404) {
           console.error('❌ Recurso no encontrado')
+        } else if (status === 405) {
+          console.error('❌ Método no permitido')
         } else if (status === 413) {
           console.error('❌ El archivo excede el límite de tamaño (10MB)')
         }
 
-        // Lanzar el error con el status para manejarlo específicamente
         const errorObj = new Error(errorMessage)
         errorObj.status = status
         throw errorObj
@@ -46,7 +54,7 @@ const createApiInstance = (apiKey) => {
   return instance
 }
 
-// Instancias separadas
+// Crear instancias
 export const userApi = createApiInstance(USER_API_KEY)
 export const adminApi = createApiInstance(ADMIN_API_KEY)
 
