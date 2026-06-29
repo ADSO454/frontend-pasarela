@@ -19,7 +19,8 @@ jobs:
       VITE_API_TARGET: ${{ secrets.VITE_API_TARGET }}
       VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
       VITE_API_KEY_ADMIN: ${{ secrets.VITE_API_KEY_ADMIN }}
-      VITE_APP_NAME: ${{ vars.VITE_APP_NAME }}
+      VITE_APP_NAME: ${{ secrets.VITE_APP_NAME }}
+      VITE_ADMIN_PASSWORD: ${{ secrets.VITE_ADMIN_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
