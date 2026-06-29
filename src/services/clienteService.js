@@ -1,4 +1,3 @@
-// src/services/clienteService.js
 import { adminApi } from './api'
 
 export const clienteService = {

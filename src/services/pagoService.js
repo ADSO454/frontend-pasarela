@@ -1,4 +1,3 @@
-// src/services/pagoService.js
 import userApi from './api'
 
 export const pagoService = {

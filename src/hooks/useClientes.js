@@ -1,4 +1,3 @@
-// src/hooks/useClientes.js
 import { useState } from 'react'
 import { clienteService } from '../services/clienteService'
 import { isAuthError } from '../services/api'

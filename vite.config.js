@@ -12,7 +12,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: VITE_API_TARGET || 'http://localhost:8080',
+        target: import.meta.env.VITE_API_TARGET || 'http://localhost:8080',
         changeOrigin: true,
         //secure: false,
       },
